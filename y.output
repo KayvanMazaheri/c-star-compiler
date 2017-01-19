@@ -1,0 +1,2708 @@
+
+
+Terminals which are not used:
+
+   END
+   NEG
+
+
+Conflict in state 70 between rule 77 and token LTE resolved as reduce.
+Conflict in state 70 between rule 77 and token GTE resolved as reduce.
+Conflict in state 70 between rule 77 and token EQU resolved as reduce.
+Conflict in state 70 between rule 77 and token NEQ resolved as reduce.
+Conflict in state 70 between rule 77 and token LOGIC_AND resolved as reduce.
+Conflict in state 70 between rule 77 and token LOGIC_OR resolved as reduce.
+Conflict in state 70 between rule 77 and token '>' resolved as reduce.
+Conflict in state 70 between rule 77 and token '<' resolved as reduce.
+Conflict in state 70 between rule 77 and token '+' resolved as reduce.
+Conflict in state 70 between rule 77 and token '-' resolved as reduce.
+Conflict in state 70 between rule 77 and token '*' resolved as shift.
+Conflict in state 70 between rule 77 and token '/' resolved as shift.
+Conflict in state 125 between rule 34 and token ELSE resolved as shift.
+State 12 contains 4 shift/reduce conflicts.
+State 14 contains 4 shift/reduce conflicts.
+State 37 contains 1 shift/reduce conflict and 30 reduce/reduce conflicts.
+State 56 contains 2 reduce/reduce conflicts.
+State 70 contains 2 shift/reduce conflicts.
+State 112 contains 14 shift/reduce conflicts.
+State 115 contains 14 shift/reduce conflicts.
+State 116 contains 14 shift/reduce conflicts.
+State 143 contains 14 shift/reduce conflicts.
+
+Grammar
+rule 1    Program -> PROGRAM ID ';' DecList '{' SList '}' '.'
+rule 2    DecList -> Dec DecList
+rule 3    DecList -> Dec
+rule 4    Dec -> VarDecs
+rule 5    Dec -> FuncDecs
+rule 6    FuncDecs -> FuncDec FuncDecs
+rule 7    FuncDecs -> FuncDec
+rule 8    VarDecs -> VarDec VarDecs
+rule 9    VarDecs -> VarDec
+rule 10   VarDec -> Type IDDList ';'
+rule 11   Type -> INT
+rule 12   Type -> DOUBLE
+rule 13   Type -> BOOL
+rule 14   Type -> CHAR
+rule 15   IDDim -> ID
+rule 16   IDDim -> IDDim '[' IntNumber ']'
+rule 17   IDDList -> IDDim ','
+rule 18   IDDList -> IDDim
+rule 19   IDList -> ID ',' IDList
+rule 20   IDList -> ID
+rule 21   FuncDec -> Type ID '(' ArgsList ')' '{' SList '}' ';'
+rule 22   ArgsList -> ArgList
+rule 23   ArgsList ->		/* empty */
+rule 24   ArgList -> Arg ';' ArgList
+rule 25   ArgList -> Arg
+rule 26   Arg -> Type IDList
+rule 27   SList -> Stmt ';' SList
+rule 28   SList ->		/* empty */
+rule 29   Stmt -> Exp
+rule 30   Stmt -> VarDecs
+rule 31   Stmt -> FOR LValue '=' Exp '(' TO
+rule 32   Stmt -> DOWN TO ')' Exp DO Block
+rule 33   Stmt -> WHILE Exp DO Block
+rule 34   Stmt -> IF Exp THEN Block
+rule 35   Stmt -> IF Exp THEN Block ELSE Block
+rule 36   Stmt -> SWITCH Exp OF '{' Cases '}'
+rule 37   Stmt -> BREAK
+rule 38   Stmt -> REPEAT Block UNTIL Exp
+rule 39   Stmt -> CONTINUE
+rule 40   Stmt -> RETURN Exp
+rule 41   Stmt -> WRITE ExpPlus
+rule 42   Stmt -> READ '(' LValue ')'
+rule 43   Range -> Exp RANGE_DOTS Exp
+rule 44   Cases -> Case Cases '.'
+rule 45   Cases -> Case
+rule 46   Case -> CASE Exp ':' Block
+rule 47   Case -> CASE Range ':' Block
+rule 48   Logic -> LOGIC_AND
+rule 49   Logic -> LOGIC_OR
+rule 50   Logic -> '<'
+rule 51   Logic -> '>'
+rule 52   Logic -> GTE
+rule 53   Logic -> LTE
+rule 54   Logic -> EQU
+rule 55   Logic -> NEQ
+rule 56   Aop -> '+'
+rule 57   Aop -> '-'
+rule 58   Aop -> '*'
+rule 59   Aop -> '/'
+rule 60   Aop -> '%'
+rule 61   ExpList -> ExpPlus
+rule 62   ExpList ->		/* empty */
+rule 63   ExpPlus -> Exp ',' ExpPlus
+rule 64   ExpPlus -> Exp
+rule 65   IDD -> IDD '[' Exp ']'
+rule 66   IDD -> ID
+rule 67   LValue -> ID
+rule 68   LValue -> IDD
+rule 69   Exp -> IntNumber
+rule 70   Exp -> RealNumber
+rule 71   Exp -> LValue
+rule 72   Exp -> CHARACTER
+rule 73   Exp -> TRUE
+rule 74   Exp -> FALSE
+rule 75   Exp -> Exp Aop Exp
+rule 76   Exp -> Exp Logic Exp
+rule 77   Exp -> '-' Exp
+rule 78   Exp -> STRING
+rule 79   Exp -> '(' Exp ')'
+rule 80   Exp -> Exp IN Range
+rule 81   Exp -> LValue '=' Exp
+rule 82   Exp -> ID '(' ExpList ')'
+rule 83   Block -> Stmt
+rule 84   Block -> '{' SList '}'
+
+Terminals, with rules where they appear
+
+$ (-1)
+'%' (37) 60
+'(' (40) 21 31 42 79 82
+')' (41) 21 32 42 79 82
+'*' (42) 58
+'+' (43) 56
+',' (44) 17 19 63
+'-' (45) 57 77
+'.' (46) 1 44
+'/' (47) 59
+':' (58) 46 47
+';' (59) 1 10 21 24 27
+'<' (60) 50
+'=' (61) 31 81
+'>' (62) 51
+'[' (91) 16 65
+']' (93) 16 65
+'{' (123) 1 21 36 84
+'}' (125) 1 21 36 84
+error (256)
+CHAR (258) 14
+INT (259) 11
+DOUBLE (260) 12
+PROGRAM (261) 1
+BOOL (262) 13
+FOR (263) 31
+TO (264) 31 32
+DOWN (265) 32
+WHILE (266) 33
+IF (267) 34 35
+THEN (268) 34 35
+ELSE (269) 35
+SWITCH (270) 36
+CASE (271) 46 47
+OF (272) 36
+BREAK (273) 37
+REPEAT (274) 38
+CONTINUE (275) 39
+RETURN (276) 40
+WRITE (277) 41
+READ (278) 42
+TRUE (279) 73
+FALSE (280) 74
+IN (281) 80
+END (282)
+ID (283) 1 15 19 20 21 66 67 82
+IntNumber (284) 16 69
+RealNumber (285) 70
+STRING (286) 78
+CHARACTER (287) 72
+LTE (288) 53
+GTE (289) 52
+EQU (290) 54
+NEQ (291) 55
+RANGE_DOTS (292) 43
+LOGIC_AND (293) 48
+LOGIC_OR (294) 49
+UNTIL (295) 38
+DO (296) 32 33
+NEG (297)
+
+Nonterminals, with rules where they appear
+
+Program (61)
+    on left: 1
+DecList (62)
+    on left: 2 3, on right: 1 2
+Dec (63)
+    on left: 4 5, on right: 2 3
+FuncDecs (64)
+    on left: 6 7, on right: 5 6
+VarDecs (65)
+    on left: 8 9, on right: 4 8 30
+VarDec (66)
+    on left: 10, on right: 8 9
+Type (67)
+    on left: 11 12 13 14, on right: 10 21 26
+IDDim (68)
+    on left: 15 16, on right: 16 17 18
+IDDList (69)
+    on left: 17 18, on right: 10
+IDList (70)
+    on left: 19 20, on right: 19 26
+FuncDec (71)
+    on left: 21, on right: 6 7
+ArgsList (72)
+    on left: 22 23, on right: 21
+ArgList (73)
+    on left: 24 25, on right: 22 24
+Arg (74)
+    on left: 26, on right: 24 25
+SList (75)
+    on left: 27 28, on right: 1 21 27 84
+Stmt (76)
+    on left: 29 30 31 32 33 34 35 36 37 38 39 40 41 42,
+    on right: 27 83
+Range (77)
+    on left: 43, on right: 47 80
+Cases (78)
+    on left: 44 45, on right: 36 44
+Case (79)
+    on left: 46 47, on right: 44 45
+Logic (80)
+    on left: 48 49 50 51 52 53 54 55, on right: 76
+Aop (81)
+    on left: 56 57 58 59 60, on right: 75
+ExpList (82)
+    on left: 61 62, on right: 82
+ExpPlus (83)
+    on left: 63 64, on right: 41 61 63
+IDD (84)
+    on left: 65 66, on right: 65 68
+LValue (85)
+    on left: 67 68, on right: 31 42 71 81
+Exp (86)
+    on left: 69 70 71 72 73 74 75 76 77 78 79 80 81 82,
+    on right: 29 31 32 33 34 35 36 38 40 43 46 63 64 65 75 76 77 79
+    80 81
+Block (87)
+    on left: 83 84, on right: 32 33 34 35 38 46 47
+
+
+state 0
+
+    PROGRAM	shift, and go to state 1
+
+    Program	go to state 160
+
+
+
+state 1
+
+    Program  ->  PROGRAM . ID ';' DecList '{' SList '}' '.'   (rule 1)
+
+    ID  	shift, and go to state 2
+
+
+
+state 2
+
+    Program  ->  PROGRAM ID . ';' DecList '{' SList '}' '.'   (rule 1)
+
+    ';' 	shift, and go to state 3
+
+
+
+state 3
+
+    Program  ->  PROGRAM ID ';' . DecList '{' SList '}' '.'   (rule 1)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+
+    DecList	go to state 8
+    Dec 	go to state 9
+    FuncDecs	go to state 10
+    VarDecs	go to state 11
+    VarDec	go to state 12
+    Type	go to state 13
+    FuncDec	go to state 14
+
+
+
+state 4
+
+    Type  ->  CHAR .   (rule 14)
+
+    $default	reduce using rule 14 (Type)
+
+
+
+state 5
+
+    Type  ->  INT .   (rule 11)
+
+    $default	reduce using rule 11 (Type)
+
+
+
+state 6
+
+    Type  ->  DOUBLE .   (rule 12)
+
+    $default	reduce using rule 12 (Type)
+
+
+
+state 7
+
+    Type  ->  BOOL .   (rule 13)
+
+    $default	reduce using rule 13 (Type)
+
+
+
+state 8
+
+    Program  ->  PROGRAM ID ';' DecList . '{' SList '}' '.'   (rule 1)
+
+    '{' 	shift, and go to state 15
+
+
+
+state 9
+
+    DecList  ->  Dec . DecList   (rule 2)
+    DecList  ->  Dec .   (rule 3)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+
+    $default	reduce using rule 3 (DecList)
+
+    DecList	go to state 16
+    Dec 	go to state 9
+    FuncDecs	go to state 10
+    VarDecs	go to state 11
+    VarDec	go to state 12
+    Type	go to state 13
+    FuncDec	go to state 14
+
+
+
+state 10
+
+    Dec  ->  FuncDecs .   (rule 5)
+
+    $default	reduce using rule 5 (Dec)
+
+
+
+state 11
+
+    Dec  ->  VarDecs .   (rule 4)
+
+    $default	reduce using rule 4 (Dec)
+
+
+
+state 12
+
+    VarDecs  ->  VarDec . VarDecs   (rule 8)
+    VarDecs  ->  VarDec .   (rule 9)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+
+    CHAR	[reduce using rule 9 (VarDecs)]
+    INT 	[reduce using rule 9 (VarDecs)]
+    DOUBLE	[reduce using rule 9 (VarDecs)]
+    BOOL	[reduce using rule 9 (VarDecs)]
+    $default	reduce using rule 9 (VarDecs)
+
+    VarDecs	go to state 17
+    VarDec	go to state 12
+    Type	go to state 18
+
+
+
+state 13
+
+    VarDec  ->  Type . IDDList ';'   (rule 10)
+    FuncDec  ->  Type . ID '(' ArgsList ')' '{' SList '}' ';'   (rule 21)
+
+    ID  	shift, and go to state 19
+
+    IDDim	go to state 20
+    IDDList	go to state 21
+
+
+
+state 14
+
+    FuncDecs  ->  FuncDec . FuncDecs   (rule 6)
+    FuncDecs  ->  FuncDec .   (rule 7)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+
+    CHAR	[reduce using rule 7 (FuncDecs)]
+    INT 	[reduce using rule 7 (FuncDecs)]
+    DOUBLE	[reduce using rule 7 (FuncDecs)]
+    BOOL	[reduce using rule 7 (FuncDecs)]
+    $default	reduce using rule 7 (FuncDecs)
+
+    FuncDecs	go to state 22
+    Type	go to state 23
+    FuncDec	go to state 14
+
+
+
+state 15
+
+    Program  ->  PROGRAM ID ';' DecList '{' . SList '}' '.'   (rule 1)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    $default	reduce using rule 28 (SList)
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    SList	go to state 45
+    Stmt	go to state 46
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+
+
+
+state 16
+
+    DecList  ->  Dec DecList .   (rule 2)
+
+    $default	reduce using rule 2 (DecList)
+
+
+
+state 17
+
+    VarDecs  ->  VarDec VarDecs .   (rule 8)
+
+    $default	reduce using rule 8 (VarDecs)
+
+
+
+state 18
+
+    VarDec  ->  Type . IDDList ';'   (rule 10)
+
+    ID  	shift, and go to state 50
+
+    IDDim	go to state 20
+    IDDList	go to state 21
+
+
+
+state 19
+
+    IDDim  ->  ID .   (rule 15)
+    FuncDec  ->  Type ID . '(' ArgsList ')' '{' SList '}' ';'   (rule 21)
+
+    '(' 	shift, and go to state 51
+
+    $default	reduce using rule 15 (IDDim)
+
+
+
+state 20
+
+    IDDim  ->  IDDim . '[' IntNumber ']'   (rule 16)
+    IDDList  ->  IDDim . ','   (rule 17)
+    IDDList  ->  IDDim .   (rule 18)
+
+    '[' 	shift, and go to state 52
+    ',' 	shift, and go to state 53
+
+    $default	reduce using rule 18 (IDDList)
+
+
+
+state 21
+
+    VarDec  ->  Type IDDList . ';'   (rule 10)
+
+    ';' 	shift, and go to state 54
+
+
+
+state 22
+
+    FuncDecs  ->  FuncDec FuncDecs .   (rule 6)
+
+    $default	reduce using rule 6 (FuncDecs)
+
+
+
+state 23
+
+    FuncDec  ->  Type . ID '(' ArgsList ')' '{' SList '}' ';'   (rule 21)
+
+    ID  	shift, and go to state 55
+
+
+
+state 24
+
+    Stmt  ->  FOR . LValue '=' Exp '(' TO   (rule 31)
+
+    ID  	shift, and go to state 56
+
+    IDD 	go to state 47
+    LValue	go to state 57
+
+
+
+state 25
+
+    Stmt  ->  DOWN . TO ')' Exp DO Block   (rule 32)
+
+    TO  	shift, and go to state 58
+
+
+
+state 26
+
+    Stmt  ->  WHILE . Exp DO Block   (rule 33)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 59
+
+
+
+state 27
+
+    Stmt  ->  IF . Exp THEN Block   (rule 34)
+    Stmt  ->  IF . Exp THEN Block ELSE Block   (rule 35)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 60
+
+
+
+state 28
+
+    Stmt  ->  SWITCH . Exp OF '{' Cases '}'   (rule 36)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 61
+
+
+
+state 29
+
+    Stmt  ->  BREAK .   (rule 37)
+
+    $default	reduce using rule 37 (Stmt)
+
+
+
+state 30
+
+    Stmt  ->  REPEAT . Block UNTIL Exp   (rule 38)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '{' 	shift, and go to state 62
+    '(' 	shift, and go to state 43
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    Stmt	go to state 63
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+    Block	go to state 64
+
+
+
+state 31
+
+    Stmt  ->  CONTINUE .   (rule 39)
+
+    $default	reduce using rule 39 (Stmt)
+
+
+
+state 32
+
+    Stmt  ->  RETURN . Exp   (rule 40)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 65
+
+
+
+state 33
+
+    Stmt  ->  WRITE . ExpPlus   (rule 41)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    ExpPlus	go to state 66
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 67
+
+
+
+state 34
+
+    Stmt  ->  READ . '(' LValue ')'   (rule 42)
+
+    '(' 	shift, and go to state 68
+
+
+
+state 35
+
+    Exp  ->  TRUE .   (rule 73)
+
+    $default	reduce using rule 73 (Exp)
+
+
+
+state 36
+
+    Exp  ->  FALSE .   (rule 74)
+
+    $default	reduce using rule 74 (Exp)
+
+
+
+state 37
+
+    IDD  ->  ID .   (rule 66)
+    LValue  ->  ID .   (rule 67)
+    Exp  ->  ID . '(' ExpList ')'   (rule 82)
+
+    '(' 	shift, and go to state 69
+
+    THEN	reduce using rule 66 (IDD)
+    THEN	[reduce using rule 67 (LValue)]
+    ELSE	reduce using rule 66 (IDD)
+    ELSE	[reduce using rule 67 (LValue)]
+    CASE	reduce using rule 66 (IDD)
+    CASE	[reduce using rule 67 (LValue)]
+    OF  	reduce using rule 66 (IDD)
+    OF  	[reduce using rule 67 (LValue)]
+    IN  	reduce using rule 66 (IDD)
+    IN  	[reduce using rule 67 (LValue)]
+    '-' 	reduce using rule 66 (IDD)
+    '-' 	[reduce using rule 67 (LValue)]
+    '*' 	reduce using rule 66 (IDD)
+    '*' 	[reduce using rule 67 (LValue)]
+    NEG 	reduce using rule 66 (IDD)
+    NEG 	[reduce using rule 67 (LValue)]
+    ';' 	reduce using rule 66 (IDD)
+    ';' 	[reduce using rule 67 (LValue)]
+    '=' 	reduce using rule 66 (IDD)
+    '=' 	[reduce using rule 67 (LValue)]
+    $default	reduce using rule 66 (IDD)
+
+
+
+state 38
+
+    Exp  ->  IntNumber .   (rule 69)
+
+    $default	reduce using rule 69 (Exp)
+
+
+
+state 39
+
+    Exp  ->  RealNumber .   (rule 70)
+
+    $default	reduce using rule 70 (Exp)
+
+
+
+state 40
+
+    Exp  ->  STRING .   (rule 78)
+
+    $default	reduce using rule 78 (Exp)
+
+
+
+state 41
+
+    Exp  ->  CHARACTER .   (rule 72)
+
+    $default	reduce using rule 72 (Exp)
+
+
+
+state 42
+
+    Exp  ->  '-' . Exp   (rule 77)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 70
+
+
+
+state 43
+
+    Exp  ->  '(' . Exp ')'   (rule 79)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 71
+
+
+
+state 44
+
+    Stmt  ->  VarDecs .   (rule 30)
+
+    $default	reduce using rule 30 (Stmt)
+
+
+
+state 45
+
+    Program  ->  PROGRAM ID ';' DecList '{' SList . '}' '.'   (rule 1)
+
+    '}' 	shift, and go to state 72
+
+
+
+state 46
+
+    SList  ->  Stmt . ';' SList   (rule 27)
+
+    ';' 	shift, and go to state 73
+
+
+
+state 47
+
+    IDD  ->  IDD . '[' Exp ']'   (rule 65)
+    LValue  ->  IDD .   (rule 68)
+
+    '[' 	shift, and go to state 74
+
+    $default	reduce using rule 68 (LValue)
+
+
+
+state 48
+
+    Exp  ->  LValue .   (rule 71)
+    Exp  ->  LValue . '=' Exp   (rule 81)
+
+    '=' 	shift, and go to state 75
+
+    $default	reduce using rule 71 (Exp)
+
+
+
+state 49
+
+    Stmt  ->  Exp .   (rule 29)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    $default	reduce using rule 29 (Stmt)
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 50
+
+    IDDim  ->  ID .   (rule 15)
+
+    $default	reduce using rule 15 (IDDim)
+
+
+
+state 51
+
+    FuncDec  ->  Type ID '(' . ArgsList ')' '{' SList '}' ';'   (rule 21)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+
+    $default	reduce using rule 23 (ArgsList)
+
+    Type	go to state 92
+    ArgsList	go to state 93
+    ArgList	go to state 94
+    Arg 	go to state 95
+
+
+
+state 52
+
+    IDDim  ->  IDDim '[' . IntNumber ']'   (rule 16)
+
+    IntNumber	shift, and go to state 96
+
+
+
+state 53
+
+    IDDList  ->  IDDim ',' .   (rule 17)
+
+    $default	reduce using rule 17 (IDDList)
+
+
+
+state 54
+
+    VarDec  ->  Type IDDList ';' .   (rule 10)
+
+    $default	reduce using rule 10 (VarDec)
+
+
+
+state 55
+
+    FuncDec  ->  Type ID . '(' ArgsList ')' '{' SList '}' ';'   (rule 21)
+
+    '(' 	shift, and go to state 51
+
+
+
+state 56
+
+    IDD  ->  ID .   (rule 66)
+    LValue  ->  ID .   (rule 67)
+
+    $default	reduce using rule 66 (IDD)
+
+
+
+state 57
+
+    Stmt  ->  FOR LValue . '=' Exp '(' TO   (rule 31)
+
+    '=' 	shift, and go to state 97
+
+
+
+state 58
+
+    Stmt  ->  DOWN TO . ')' Exp DO Block   (rule 32)
+
+    ')' 	shift, and go to state 98
+
+
+
+state 59
+
+    Stmt  ->  WHILE Exp . DO Block   (rule 33)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    DO  	shift, and go to state 99
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 60
+
+    Stmt  ->  IF Exp . THEN Block   (rule 34)
+    Stmt  ->  IF Exp . THEN Block ELSE Block   (rule 35)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    THEN	shift, and go to state 100
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 61
+
+    Stmt  ->  SWITCH Exp . OF '{' Cases '}'   (rule 36)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    OF  	shift, and go to state 101
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 62
+
+    Block  ->  '{' . SList '}'   (rule 84)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    $default	reduce using rule 28 (SList)
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    SList	go to state 102
+    Stmt	go to state 46
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+
+
+
+state 63
+
+    Block  ->  Stmt .   (rule 83)
+
+    $default	reduce using rule 83 (Block)
+
+
+
+state 64
+
+    Stmt  ->  REPEAT Block . UNTIL Exp   (rule 38)
+
+    UNTIL	shift, and go to state 103
+
+
+
+state 65
+
+    Stmt  ->  RETURN Exp .   (rule 40)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    $default	reduce using rule 40 (Stmt)
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 66
+
+    Stmt  ->  WRITE ExpPlus .   (rule 41)
+
+    $default	reduce using rule 41 (Stmt)
+
+
+
+state 67
+
+    ExpPlus  ->  Exp . ',' ExpPlus   (rule 63)
+    ExpPlus  ->  Exp .   (rule 64)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    ',' 	shift, and go to state 104
+    '%' 	shift, and go to state 89
+
+    $default	reduce using rule 64 (ExpPlus)
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 68
+
+    Stmt  ->  READ '(' . LValue ')'   (rule 42)
+
+    ID  	shift, and go to state 56
+
+    IDD 	go to state 47
+    LValue	go to state 105
+
+
+
+state 69
+
+    Exp  ->  ID '(' . ExpList ')'   (rule 82)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    $default	reduce using rule 62 (ExpList)
+
+    ExpList	go to state 106
+    ExpPlus	go to state 107
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 67
+
+
+
+state 70
+
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  '-' Exp .   (rule 77)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    IN  	[reduce using rule 77 (Exp)]
+    '%' 	[reduce using rule 77 (Exp)]
+    $default	reduce using rule 77 (Exp)
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 71
+
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  '(' Exp . ')'   (rule 79)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    ')' 	shift, and go to state 108
+    '%' 	shift, and go to state 89
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 72
+
+    Program  ->  PROGRAM ID ';' DecList '{' SList '}' . '.'   (rule 1)
+
+    '.' 	shift, and go to state 109
+
+
+
+state 73
+
+    SList  ->  Stmt ';' . SList   (rule 27)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    $default	reduce using rule 28 (SList)
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    SList	go to state 110
+    Stmt	go to state 46
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+
+
+
+state 74
+
+    IDD  ->  IDD '[' . Exp ']'   (rule 65)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 111
+
+
+
+state 75
+
+    Exp  ->  LValue '=' . Exp   (rule 81)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 112
+
+
+
+state 76
+
+    Exp  ->  Exp IN . Range   (rule 80)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    Range	go to state 113
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 114
+
+
+
+state 77
+
+    Logic  ->  LTE .   (rule 53)
+
+    $default	reduce using rule 53 (Logic)
+
+
+
+state 78
+
+    Logic  ->  GTE .   (rule 52)
+
+    $default	reduce using rule 52 (Logic)
+
+
+
+state 79
+
+    Logic  ->  EQU .   (rule 54)
+
+    $default	reduce using rule 54 (Logic)
+
+
+
+state 80
+
+    Logic  ->  NEQ .   (rule 55)
+
+    $default	reduce using rule 55 (Logic)
+
+
+
+state 81
+
+    Logic  ->  LOGIC_AND .   (rule 48)
+
+    $default	reduce using rule 48 (Logic)
+
+
+
+state 82
+
+    Logic  ->  LOGIC_OR .   (rule 49)
+
+    $default	reduce using rule 49 (Logic)
+
+
+
+state 83
+
+    Logic  ->  '>' .   (rule 51)
+
+    $default	reduce using rule 51 (Logic)
+
+
+
+state 84
+
+    Logic  ->  '<' .   (rule 50)
+
+    $default	reduce using rule 50 (Logic)
+
+
+
+state 85
+
+    Aop  ->  '+' .   (rule 56)
+
+    $default	reduce using rule 56 (Aop)
+
+
+
+state 86
+
+    Aop  ->  '-' .   (rule 57)
+
+    $default	reduce using rule 57 (Aop)
+
+
+
+state 87
+
+    Aop  ->  '*' .   (rule 58)
+
+    $default	reduce using rule 58 (Aop)
+
+
+
+state 88
+
+    Aop  ->  '/' .   (rule 59)
+
+    $default	reduce using rule 59 (Aop)
+
+
+
+state 89
+
+    Aop  ->  '%' .   (rule 60)
+
+    $default	reduce using rule 60 (Aop)
+
+
+
+state 90
+
+    Exp  ->  Exp Logic . Exp   (rule 76)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 115
+
+
+
+state 91
+
+    Exp  ->  Exp Aop . Exp   (rule 75)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 116
+
+
+
+state 92
+
+    Arg  ->  Type . IDList   (rule 26)
+
+    ID  	shift, and go to state 117
+
+    IDList	go to state 118
+
+
+
+state 93
+
+    FuncDec  ->  Type ID '(' ArgsList . ')' '{' SList '}' ';'   (rule 21)
+
+    ')' 	shift, and go to state 119
+
+
+
+state 94
+
+    ArgsList  ->  ArgList .   (rule 22)
+
+    $default	reduce using rule 22 (ArgsList)
+
+
+
+state 95
+
+    ArgList  ->  Arg . ';' ArgList   (rule 24)
+    ArgList  ->  Arg .   (rule 25)
+
+    ';' 	shift, and go to state 120
+
+    $default	reduce using rule 25 (ArgList)
+
+
+
+state 96
+
+    IDDim  ->  IDDim '[' IntNumber . ']'   (rule 16)
+
+    ']' 	shift, and go to state 121
+
+
+
+state 97
+
+    Stmt  ->  FOR LValue '=' . Exp '(' TO   (rule 31)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 122
+
+
+
+state 98
+
+    Stmt  ->  DOWN TO ')' . Exp DO Block   (rule 32)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 123
+
+
+
+state 99
+
+    Stmt  ->  WHILE Exp DO . Block   (rule 33)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '{' 	shift, and go to state 62
+    '(' 	shift, and go to state 43
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    Stmt	go to state 63
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+    Block	go to state 124
+
+
+
+state 100
+
+    Stmt  ->  IF Exp THEN . Block   (rule 34)
+    Stmt  ->  IF Exp THEN . Block ELSE Block   (rule 35)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '{' 	shift, and go to state 62
+    '(' 	shift, and go to state 43
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    Stmt	go to state 63
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+    Block	go to state 125
+
+
+
+state 101
+
+    Stmt  ->  SWITCH Exp OF . '{' Cases '}'   (rule 36)
+
+    '{' 	shift, and go to state 126
+
+
+
+state 102
+
+    Block  ->  '{' SList . '}'   (rule 84)
+
+    '}' 	shift, and go to state 127
+
+
+
+state 103
+
+    Stmt  ->  REPEAT Block UNTIL . Exp   (rule 38)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 128
+
+
+
+state 104
+
+    ExpPlus  ->  Exp ',' . ExpPlus   (rule 63)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    ExpPlus	go to state 129
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 67
+
+
+
+state 105
+
+    Stmt  ->  READ '(' LValue . ')'   (rule 42)
+
+    ')' 	shift, and go to state 130
+
+
+
+state 106
+
+    Exp  ->  ID '(' ExpList . ')'   (rule 82)
+
+    ')' 	shift, and go to state 131
+
+
+
+state 107
+
+    ExpList  ->  ExpPlus .   (rule 61)
+
+    $default	reduce using rule 61 (ExpList)
+
+
+
+state 108
+
+    Exp  ->  '(' Exp ')' .   (rule 79)
+
+    $default	reduce using rule 79 (Exp)
+
+
+
+state 109
+
+    Program  ->  PROGRAM ID ';' DecList '{' SList '}' '.' .   (rule 1)
+
+    $default	reduce using rule 1 (Program)
+
+
+
+state 110
+
+    SList  ->  Stmt ';' SList .   (rule 27)
+
+    $default	reduce using rule 27 (SList)
+
+
+
+state 111
+
+    IDD  ->  IDD '[' Exp . ']'   (rule 65)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    ']' 	shift, and go to state 132
+    '%' 	shift, and go to state 89
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 112
+
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+    Exp  ->  LValue '=' Exp .   (rule 81)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    IN  	[reduce using rule 81 (Exp)]
+    LTE 	[reduce using rule 81 (Exp)]
+    GTE 	[reduce using rule 81 (Exp)]
+    EQU 	[reduce using rule 81 (Exp)]
+    NEQ 	[reduce using rule 81 (Exp)]
+    LOGIC_AND	[reduce using rule 81 (Exp)]
+    LOGIC_OR	[reduce using rule 81 (Exp)]
+    '>' 	[reduce using rule 81 (Exp)]
+    '<' 	[reduce using rule 81 (Exp)]
+    '+' 	[reduce using rule 81 (Exp)]
+    '-' 	[reduce using rule 81 (Exp)]
+    '*' 	[reduce using rule 81 (Exp)]
+    '/' 	[reduce using rule 81 (Exp)]
+    '%' 	[reduce using rule 81 (Exp)]
+    $default	reduce using rule 81 (Exp)
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 113
+
+    Exp  ->  Exp IN Range .   (rule 80)
+
+    $default	reduce using rule 80 (Exp)
+
+
+
+state 114
+
+    Range  ->  Exp . RANGE_DOTS Exp   (rule 43)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    RANGE_DOTS	shift, and go to state 133
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 115
+
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp Logic Exp .   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    IN  	[reduce using rule 76 (Exp)]
+    LTE 	[reduce using rule 76 (Exp)]
+    GTE 	[reduce using rule 76 (Exp)]
+    EQU 	[reduce using rule 76 (Exp)]
+    NEQ 	[reduce using rule 76 (Exp)]
+    LOGIC_AND	[reduce using rule 76 (Exp)]
+    LOGIC_OR	[reduce using rule 76 (Exp)]
+    '>' 	[reduce using rule 76 (Exp)]
+    '<' 	[reduce using rule 76 (Exp)]
+    '+' 	[reduce using rule 76 (Exp)]
+    '-' 	[reduce using rule 76 (Exp)]
+    '*' 	[reduce using rule 76 (Exp)]
+    '/' 	[reduce using rule 76 (Exp)]
+    '%' 	[reduce using rule 76 (Exp)]
+    $default	reduce using rule 76 (Exp)
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 116
+
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp Aop Exp .   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    IN  	[reduce using rule 75 (Exp)]
+    LTE 	[reduce using rule 75 (Exp)]
+    GTE 	[reduce using rule 75 (Exp)]
+    EQU 	[reduce using rule 75 (Exp)]
+    NEQ 	[reduce using rule 75 (Exp)]
+    LOGIC_AND	[reduce using rule 75 (Exp)]
+    LOGIC_OR	[reduce using rule 75 (Exp)]
+    '>' 	[reduce using rule 75 (Exp)]
+    '<' 	[reduce using rule 75 (Exp)]
+    '+' 	[reduce using rule 75 (Exp)]
+    '-' 	[reduce using rule 75 (Exp)]
+    '*' 	[reduce using rule 75 (Exp)]
+    '/' 	[reduce using rule 75 (Exp)]
+    '%' 	[reduce using rule 75 (Exp)]
+    $default	reduce using rule 75 (Exp)
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 117
+
+    IDList  ->  ID . ',' IDList   (rule 19)
+    IDList  ->  ID .   (rule 20)
+
+    ',' 	shift, and go to state 134
+
+    $default	reduce using rule 20 (IDList)
+
+
+
+state 118
+
+    Arg  ->  Type IDList .   (rule 26)
+
+    $default	reduce using rule 26 (Arg)
+
+
+
+state 119
+
+    FuncDec  ->  Type ID '(' ArgsList ')' . '{' SList '}' ';'   (rule 21)
+
+    '{' 	shift, and go to state 135
+
+
+
+state 120
+
+    ArgList  ->  Arg ';' . ArgList   (rule 24)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+
+    Type	go to state 92
+    ArgList	go to state 136
+    Arg 	go to state 95
+
+
+
+state 121
+
+    IDDim  ->  IDDim '[' IntNumber ']' .   (rule 16)
+
+    $default	reduce using rule 16 (IDDim)
+
+
+
+state 122
+
+    Stmt  ->  FOR LValue '=' Exp . '(' TO   (rule 31)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '(' 	shift, and go to state 137
+    '%' 	shift, and go to state 89
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 123
+
+    Stmt  ->  DOWN TO ')' Exp . DO Block   (rule 32)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    DO  	shift, and go to state 138
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 124
+
+    Stmt  ->  WHILE Exp DO Block .   (rule 33)
+
+    $default	reduce using rule 33 (Stmt)
+
+
+
+state 125
+
+    Stmt  ->  IF Exp THEN Block .   (rule 34)
+    Stmt  ->  IF Exp THEN Block . ELSE Block   (rule 35)
+
+    ELSE	shift, and go to state 139
+
+    $default	reduce using rule 34 (Stmt)
+
+
+
+state 126
+
+    Stmt  ->  SWITCH Exp OF '{' . Cases '}'   (rule 36)
+
+    CASE	shift, and go to state 140
+
+    Cases	go to state 141
+    Case	go to state 142
+
+
+
+state 127
+
+    Block  ->  '{' SList '}' .   (rule 84)
+
+    $default	reduce using rule 84 (Block)
+
+
+
+state 128
+
+    Stmt  ->  REPEAT Block UNTIL Exp .   (rule 38)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    $default	reduce using rule 38 (Stmt)
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 129
+
+    ExpPlus  ->  Exp ',' ExpPlus .   (rule 63)
+
+    $default	reduce using rule 63 (ExpPlus)
+
+
+
+state 130
+
+    Stmt  ->  READ '(' LValue ')' .   (rule 42)
+
+    $default	reduce using rule 42 (Stmt)
+
+
+
+state 131
+
+    Exp  ->  ID '(' ExpList ')' .   (rule 82)
+
+    $default	reduce using rule 82 (Exp)
+
+
+
+state 132
+
+    IDD  ->  IDD '[' Exp ']' .   (rule 65)
+
+    $default	reduce using rule 65 (IDD)
+
+
+
+state 133
+
+    Range  ->  Exp RANGE_DOTS . Exp   (rule 43)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 143
+
+
+
+state 134
+
+    IDList  ->  ID ',' . IDList   (rule 19)
+
+    ID  	shift, and go to state 117
+
+    IDList	go to state 144
+
+
+
+state 135
+
+    FuncDec  ->  Type ID '(' ArgsList ')' '{' . SList '}' ';'   (rule 21)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    $default	reduce using rule 28 (SList)
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    SList	go to state 145
+    Stmt	go to state 46
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+
+
+
+state 136
+
+    ArgList  ->  Arg ';' ArgList .   (rule 24)
+
+    $default	reduce using rule 24 (ArgList)
+
+
+
+state 137
+
+    Stmt  ->  FOR LValue '=' Exp '(' . TO   (rule 31)
+
+    TO  	shift, and go to state 146
+
+
+
+state 138
+
+    Stmt  ->  DOWN TO ')' Exp DO . Block   (rule 32)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '{' 	shift, and go to state 62
+    '(' 	shift, and go to state 43
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    Stmt	go to state 63
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+    Block	go to state 147
+
+
+
+state 139
+
+    Stmt  ->  IF Exp THEN Block ELSE . Block   (rule 35)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '{' 	shift, and go to state 62
+    '(' 	shift, and go to state 43
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    Stmt	go to state 63
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+    Block	go to state 148
+
+
+
+state 140
+
+    Case  ->  CASE . Exp ':' Block   (rule 46)
+    Case  ->  CASE . Range ':' Block   (rule 47)
+
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '(' 	shift, and go to state 43
+
+    Range	go to state 149
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 150
+
+
+
+state 141
+
+    Stmt  ->  SWITCH Exp OF '{' Cases . '}'   (rule 36)
+
+    '}' 	shift, and go to state 151
+
+
+
+state 142
+
+    Cases  ->  Case . Cases '.'   (rule 44)
+    Cases  ->  Case .   (rule 45)
+
+    CASE	shift, and go to state 140
+
+    $default	reduce using rule 45 (Cases)
+
+    Cases	go to state 152
+    Case	go to state 142
+
+
+
+state 143
+
+    Range  ->  Exp RANGE_DOTS Exp .   (rule 43)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    '%' 	shift, and go to state 89
+
+    IN  	[reduce using rule 43 (Range)]
+    LTE 	[reduce using rule 43 (Range)]
+    GTE 	[reduce using rule 43 (Range)]
+    EQU 	[reduce using rule 43 (Range)]
+    NEQ 	[reduce using rule 43 (Range)]
+    LOGIC_AND	[reduce using rule 43 (Range)]
+    LOGIC_OR	[reduce using rule 43 (Range)]
+    '>' 	[reduce using rule 43 (Range)]
+    '<' 	[reduce using rule 43 (Range)]
+    '+' 	[reduce using rule 43 (Range)]
+    '-' 	[reduce using rule 43 (Range)]
+    '*' 	[reduce using rule 43 (Range)]
+    '/' 	[reduce using rule 43 (Range)]
+    '%' 	[reduce using rule 43 (Range)]
+    $default	reduce using rule 43 (Range)
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 144
+
+    IDList  ->  ID ',' IDList .   (rule 19)
+
+    $default	reduce using rule 19 (IDList)
+
+
+
+state 145
+
+    FuncDec  ->  Type ID '(' ArgsList ')' '{' SList . '}' ';'   (rule 21)
+
+    '}' 	shift, and go to state 153
+
+
+
+state 146
+
+    Stmt  ->  FOR LValue '=' Exp '(' TO .   (rule 31)
+
+    $default	reduce using rule 31 (Stmt)
+
+
+
+state 147
+
+    Stmt  ->  DOWN TO ')' Exp DO Block .   (rule 32)
+
+    $default	reduce using rule 32 (Stmt)
+
+
+
+state 148
+
+    Stmt  ->  IF Exp THEN Block ELSE Block .   (rule 35)
+
+    $default	reduce using rule 35 (Stmt)
+
+
+
+state 149
+
+    Case  ->  CASE Range . ':' Block   (rule 47)
+
+    ':' 	shift, and go to state 154
+
+
+
+state 150
+
+    Range  ->  Exp . RANGE_DOTS Exp   (rule 43)
+    Case  ->  CASE Exp . ':' Block   (rule 46)
+    Exp  ->  Exp . Aop Exp   (rule 75)
+    Exp  ->  Exp . Logic Exp   (rule 76)
+    Exp  ->  Exp . IN Range   (rule 80)
+
+    IN  	shift, and go to state 76
+    LTE 	shift, and go to state 77
+    GTE 	shift, and go to state 78
+    EQU 	shift, and go to state 79
+    NEQ 	shift, and go to state 80
+    RANGE_DOTS	shift, and go to state 133
+    LOGIC_AND	shift, and go to state 81
+    LOGIC_OR	shift, and go to state 82
+    '>' 	shift, and go to state 83
+    '<' 	shift, and go to state 84
+    '+' 	shift, and go to state 85
+    '-' 	shift, and go to state 86
+    '*' 	shift, and go to state 87
+    '/' 	shift, and go to state 88
+    ':' 	shift, and go to state 155
+    '%' 	shift, and go to state 89
+
+    Logic	go to state 90
+    Aop 	go to state 91
+
+
+
+state 151
+
+    Stmt  ->  SWITCH Exp OF '{' Cases '}' .   (rule 36)
+
+    $default	reduce using rule 36 (Stmt)
+
+
+
+state 152
+
+    Cases  ->  Case Cases . '.'   (rule 44)
+
+    '.' 	shift, and go to state 156
+
+
+
+state 153
+
+    FuncDec  ->  Type ID '(' ArgsList ')' '{' SList '}' . ';'   (rule 21)
+
+    ';' 	shift, and go to state 157
+
+
+
+state 154
+
+    Case  ->  CASE Range ':' . Block   (rule 47)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '{' 	shift, and go to state 62
+    '(' 	shift, and go to state 43
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    Stmt	go to state 63
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+    Block	go to state 158
+
+
+
+state 155
+
+    Case  ->  CASE Exp ':' . Block   (rule 46)
+
+    CHAR	shift, and go to state 4
+    INT 	shift, and go to state 5
+    DOUBLE	shift, and go to state 6
+    BOOL	shift, and go to state 7
+    FOR 	shift, and go to state 24
+    DOWN	shift, and go to state 25
+    WHILE	shift, and go to state 26
+    IF  	shift, and go to state 27
+    SWITCH	shift, and go to state 28
+    BREAK	shift, and go to state 29
+    REPEAT	shift, and go to state 30
+    CONTINUE	shift, and go to state 31
+    RETURN	shift, and go to state 32
+    WRITE	shift, and go to state 33
+    READ	shift, and go to state 34
+    TRUE	shift, and go to state 35
+    FALSE	shift, and go to state 36
+    ID  	shift, and go to state 37
+    IntNumber	shift, and go to state 38
+    RealNumber	shift, and go to state 39
+    STRING	shift, and go to state 40
+    CHARACTER	shift, and go to state 41
+    '-' 	shift, and go to state 42
+    '{' 	shift, and go to state 62
+    '(' 	shift, and go to state 43
+
+    VarDecs	go to state 44
+    VarDec	go to state 12
+    Type	go to state 18
+    Stmt	go to state 63
+    IDD 	go to state 47
+    LValue	go to state 48
+    Exp 	go to state 49
+    Block	go to state 159
+
+
+
+state 156
+
+    Cases  ->  Case Cases '.' .   (rule 44)
+
+    $default	reduce using rule 44 (Cases)
+
+
+
+state 157
+
+    FuncDec  ->  Type ID '(' ArgsList ')' '{' SList '}' ';' .   (rule 21)
+
+    $default	reduce using rule 21 (FuncDec)
+
+
+
+state 158
+
+    Case  ->  CASE Range ':' Block .   (rule 47)
+
+    $default	reduce using rule 47 (Case)
+
+
+
+state 159
+
+    Case  ->  CASE Exp ':' Block .   (rule 46)
+
+    $default	reduce using rule 46 (Case)
+
+
+
+state 160
+
+    $   	go to state 161
+
+
+
+state 161
+
+    $   	go to state 162
+
+
+
+state 162
+
+    $default	accept
