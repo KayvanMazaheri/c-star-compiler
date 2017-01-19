@@ -21,6 +21,7 @@ for                                         return FOR;
 to                                          return TO;
 down                                        return DOWN;
 while                                       return WHILE;
+until                                       return UNTIL;
 
 if                                          return IF;
 then                                        return THEN;
