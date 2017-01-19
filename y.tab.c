@@ -103,6 +103,7 @@ Maintained by Magnus Ekdahl <magnus@debian.org>
   extern int yylineno;
   extern char* yytext;
 
+
 	int yylex(void);
 	void yyerror(char *msg);
 
@@ -681,16 +682,16 @@ static const short yyrhs[] = {     6,
 
 #if (YY_parse_DEBUG != 0) || defined(YY_parse_ERROR_VERBOSE) 
 static const short yyrline[] = { 0,
-    71,    74,    75,    78,    79,    82,    83,    86,    87,    90,
-    93,    94,    95,    96,    99,   100,   103,   104,   107,   108,
-   111,   114,   115,   118,   119,   122,   125,   126,   129,   130,
-   131,   132,   133,   134,   135,   136,   137,   138,   139,   140,
-   141,   142,   145,   148,   149,   152,   153,   156,   157,   158,
-   159,   160,   161,   162,   163,   166,   167,   168,   169,   170,
-   173,   174,   177,   178,   181,   184,   185,   188,   191,   192,
-   195,   196,   197,   198,   199,   200,   201,   202,   203,   204,
-   205,   206,   207,   208,   209,   212,   213,   214,   215,   216,
-   217,   218,   219,   220,   221,   222,   225,   226
+    72,    75,    76,    79,    80,    83,    84,    87,    88,    91,
+    94,    95,    96,    97,   100,   101,   104,   105,   108,   109,
+   112,   115,   116,   119,   120,   123,   126,   127,   130,   131,
+   132,   133,   134,   135,   136,   137,   138,   139,   140,   141,
+   142,   143,   146,   149,   150,   153,   154,   157,   158,   159,
+   160,   161,   162,   163,   164,   167,   168,   169,   170,   171,
+   174,   175,   178,   179,   182,   185,   186,   189,   192,   193,
+   196,   197,   198,   199,   200,   201,   202,   203,   204,   205,
+   206,   207,   208,   209,   210,   213,   214,   215,   216,   217,
+   218,   219,   220,   221,   222,   223,   226,   227
 };
 
 static const char * const yytname[] = {   "$","error","$illegal.","CHAR","INT",
@@ -702,7 +703,7 @@ static const char * const yytname[] = {   "$","error","$illegal.","CHAR","INT",
 "'.'","','","'('","')'","':'","Program","DecList","Dec","FuncDecs","VarDecs",
 "VarDec","Type","IDDim","IDDList","IDList","FuncDec","ArgsList","ArgList","Arg",
 "SList","Stmt","Range","Cases","Case","ExpList","ExpPlus","IDDRight","LValue",
-"Exp","ExpRight","Block","\37777777700(\37777777764K\37777777605U"
+"Exp","ExpRight","Block","\37777777700\37777777670L\37777777627]U"
 };
 #endif
 
@@ -1595,12 +1596,12 @@ YYLABEL(yyerrhandle)
 /* END */
 
  #line 1038 "/usr/share/bison++/bison.cc"
-#line 228 "syntax.y"
+#line 229 "syntax.y"
 
 
 void yyerror(char *s) {
 	fprintf(stderr, "%s\n", s);
-	fprintf(stderr, "%s\n", yytext);
+	/* fprintf(stderr, "%c\n", yychar); */
 }
 
 int main(void) {

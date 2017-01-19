@@ -9,8 +9,8 @@ NUMBER                                      {DIGIT}+
 
 %%
 
-
-
+[ \n]                                       ;
+[[:space:][:blank:]]                        ;
 char                                        return CHAR;
 int                                         return INT;
 double                                      return DOUBLE;

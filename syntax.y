@@ -2,6 +2,7 @@
   extern int yylineno;
   extern char* yytext;
 
+
 	int yylex(void);
 	void yyerror(char *msg);
 %}
@@ -229,7 +230,7 @@ Block     : Stmt
 
 void yyerror(char *s) {
 	fprintf(stderr, "%s\n", s);
-	fprintf(stderr, "%s\n", yytext);
+	/* fprintf(stderr, "%c\n", yychar); */
 }
 
 int main(void) {
