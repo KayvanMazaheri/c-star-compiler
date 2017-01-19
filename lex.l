@@ -1,5 +1,5 @@
 %{
-#include "lex.h"
+#include "y.tab.h"
 %}
 
 DIGIT                                       [0-9]
@@ -41,7 +41,7 @@ true                                        return TRUE;
 false                                       return FALSE;
 in                                          return IN;
 end                                         return END;
-
+do                                          return DO;
 
 (_|{ALPHA})({ALPHA}|{DIGIT}|_)*             return ID;
 

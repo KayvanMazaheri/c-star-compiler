@@ -360,8 +360,8 @@ static void yynoreturn yy_fatal_error (yyconst char* msg  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 41
-#define YY_END_OF_BUFFER 42
+#define YY_NUM_RULES 42
+#define YY_END_OF_BUFFER 43
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -371,20 +371,20 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[134] =
     {   0,
-        0,    0,   42,   41,   41,   41,   41,   41,   41,   41,
-       28,   41,   41,   41,   27,   27,   27,   27,   27,   27,
-       27,   27,   27,   27,   27,   27,   27,   27,   41,   37,
-        0,   39,    0,    0,   28,   38,   29,   30,    0,   34,
-       36,   35,   27,   27,   27,   27,   27,   27,   27,   27,
-       27,   27,   27,   11,   25,   16,   27,   27,   27,   27,
-        7,   27,   27,   27,   27,   40,   32,   33,   29,    0,
-       31,   27,   27,   27,   27,   27,   27,   27,   27,   26,
-       27,    6,    2,   27,   27,   27,   27,   27,   27,   27,
-       27,   27,   27,    5,   27,   15,    1,   27,   27,    8,
+        0,    0,   43,   42,   42,   42,   42,   42,   42,   42,
+       29,   42,   42,   42,   28,   28,   28,   28,   28,   28,
+       28,   28,   28,   28,   28,   28,   28,   28,   42,   38,
+        0,   40,    0,    0,   29,   39,   30,   31,    0,   35,
+       37,   36,   28,   28,   28,   28,   28,   28,   27,   28,
+       28,   28,   28,   11,   25,   16,   28,   28,   28,   28,
+        7,   28,   28,   28,   28,   41,   33,   34,   30,    0,
+       32,   28,   28,   28,   28,   28,   28,   28,   28,   26,
+       28,    6,    2,   28,   28,   28,   28,   28,   28,   28,
+       28,   28,   28,    5,   28,   15,    1,   28,   28,    8,
 
-       13,   27,   27,   22,   27,   27,   27,   12,   23,   27,
-       27,   27,   17,   27,   27,   24,   27,   27,   27,   27,
-       10,    9,   21,   27,    3,   27,   18,   20,   14,   27,
+       13,   28,   28,   22,   28,   28,   28,   12,   23,   28,
+       28,   28,   17,   28,   28,   24,   28,   28,   28,   28,
+       10,    9,   21,   28,    3,   28,   18,   20,   14,   28,
         4,   19,    0
     } ;
 
@@ -534,7 +534,7 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "lex.l"
 #line 2 "lex.l"
-#include "lex.h"
+#include "y.tab.h"
 #line 539 "lex.yy.c"
 
 #define INITIAL 0
@@ -947,80 +947,85 @@ return END;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
+#line 44 "lex.l"
+return DO;
+	YY_BREAK
+case 28:
+YY_RULE_SETUP
 #line 46 "lex.l"
 return ID;
 	YY_BREAK
-case 28:
+case 29:
 YY_RULE_SETUP
 #line 48 "lex.l"
 return IntNumber;
 	YY_BREAK
-case 29:
+case 30:
 YY_RULE_SETUP
 #line 49 "lex.l"
 return RealNumber;
 	YY_BREAK
-case 30:
+case 31:
 YY_RULE_SETUP
 #line 50 "lex.l"
 return RealNumber;
 	YY_BREAK
-case 31:
+case 32:
 YY_RULE_SETUP
 #line 51 "lex.l"
 return RealNumber;
 	YY_BREAK
-case 32:
+case 33:
 YY_RULE_SETUP
 #line 52 "lex.l"
 return STRING;
 	YY_BREAK
-case 33:
+case 34:
 YY_RULE_SETUP
 #line 53 "lex.l"
 return CHARACTER;
 	YY_BREAK
-case 34:
+case 35:
 YY_RULE_SETUP
 #line 55 "lex.l"
 return LTE;
 	YY_BREAK
-case 35:
+case 36:
 YY_RULE_SETUP
 #line 56 "lex.l"
 return GTE;
 	YY_BREAK
-case 36:
+case 37:
 YY_RULE_SETUP
 #line 57 "lex.l"
 return EQU;
 	YY_BREAK
-case 37:
+case 38:
 YY_RULE_SETUP
 #line 58 "lex.l"
 return NEQ;
 	YY_BREAK
-case 38:
+case 39:
 YY_RULE_SETUP
 #line 59 "lex.l"
 return RANGE_DOTS;
 	YY_BREAK
-case 39:
+case 40:
 YY_RULE_SETUP
 #line 60 "lex.l"
 return LOGIC_AND;
 	YY_BREAK
-case 40:
+case 41:
 YY_RULE_SETUP
 #line 61 "lex.l"
 return LOGIC_OR;
 	YY_BREAK
-case 41:
+case 42:
 YY_RULE_SETUP
 #line 62 "lex.l"
 ECHO;
 	YY_BREAK
-#line 1024 "lex.yy.c"
+#line 1029 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

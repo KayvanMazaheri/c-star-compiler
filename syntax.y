@@ -1,4 +1,7 @@
 %{
+  extern int yylineno;
+  extern char* yytext;
+
 	int yylex(void);
 	void yyerror(char *msg);
 %}
@@ -41,17 +44,27 @@
 %token LOGIC_AND
 %token LOGIC_OR
 %token UNTIL
+%token DO
+
+%token VAR
+%token DEF
 
 %start Program
 
-%nonassoc DO
-%nonassoc THEN
+%nonassoc IFX
 %nonassoc ELSE
-%nonassoc EQU NEQ '>' '<' GTE LTE
-%left LOGIC_OR LOGIC_AND
+%nonassoc IN
+%nonassoc RANGE_DOTS
+
+%right '='
+%left LOGIC_OR
+%left LOGIC_AND
+%left EQU NEQ
+%left '>' '<' GTE LTE
 %left '+' '-'
-%left '*' '/'
+%left '*' '/' '%'
 %left NEG
+%left '[' ']'
 
 %%
 
@@ -59,7 +72,7 @@ Program   : PROGRAM ID ';' DecList '{' SList '}' '.'
           ;
 
 DecList   : Dec DecList
-          | Dec
+          |
           ;
 
 Dec       : VarDecs
@@ -67,14 +80,14 @@ Dec       : VarDecs
           ;
 
 FuncDecs  : FuncDec FuncDecs
-          | FuncDec
+          | FuncDec END
           ;
 
 VarDecs   : VarDec VarDecs
-          | VarDec
+          | VarDec END
           ;
 
-VarDec    : Type IDDList ';'
+VarDec    : VAR Type IDDList ';'
           ;
 
 Type      : INT
@@ -95,7 +108,7 @@ IDList    : ID ',' IDList
           | ID
           ;
 
-FuncDec   :  Type ID '(' ArgsList ')' '{' SList '}' ';'
+FuncDec   : DEF Type ID '(' ArgsList ')' '{' SList '}' ';'
           ;
 
 ArgsList  : ArgList
@@ -118,7 +131,7 @@ Stmt      : Exp
           | FOR LValue '=' Exp '(' TO
           | DOWN TO ')' Exp DO Block
           | WHILE Exp DO Block
-          | IF Exp THEN Block
+          | IF Exp THEN Block %prec IFX
           | IF Exp THEN Block ELSE Block
           | SWITCH Exp OF '{' Cases '}'
           | BREAK
@@ -133,7 +146,7 @@ Range     : Exp RANGE_DOTS Exp
           ;
 
 Cases     : Case Cases '.'
-          | Case
+          | Case END
           ;
 
 Case      : CASE Exp ':' Block
@@ -165,28 +178,48 @@ ExpPlus   : Exp ',' ExpPlus
           | Exp
           ;
 
-IDD       : IDD '[' Exp ']'
-          | ID
+IDD       : ID IDDRight
           ;
 
-LValue    : ID
-          | IDD
+IDDRight  : '[' Exp ']' IDDRight
+          |
           ;
 
-Exp       : IntNumber
+LValue    : ID IDDRight
+          ;
+
+AopLogic  : Aop
+          | Logic
+          ;
+
+Exp       : ExpRight
+          | Exp '+' Exp
+          | Exp '-' Exp
+          | Exp '*' Exp
+          | Exp '/' Exp
+          | Exp '%' Exp
+          | Exp LOGIC_AND Exp
+          | Exp LOGIC_OR Exp
+          | Exp '<' Exp
+          | Exp '>' Exp
+          | Exp GTE Exp
+          | Exp LTE Exp
+          | Exp EQU Exp
+          | Exp NEQ Exp
+          | Exp IN Range
+          ;
+
+ExpRight  : IntNumber
           | RealNumber
           | LValue
           | CHARACTER
+          | STRING
           | TRUE
           | FALSE
-          | Exp Aop Exp
-          | Exp Logic Exp
-          | '-' Exp
-          | STRING
-          | '(' Exp ')'
-          | Exp IN Range
+          | '-' Exp %prec NEG
           | LValue '=' Exp
-          | ID '(' ExpList ')'
+          | '(' Exp ')'
+          | '(' ID '(' ExpList ')' ')'
           ;
 
 Block     : Stmt
@@ -196,6 +229,7 @@ Block     : Stmt
 
 void yyerror(char *s) {
 	fprintf(stderr, "%s\n", s);
+	fprintf(stderr, "%s\n", yytext);
 }
 
 int main(void) {
